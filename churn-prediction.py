@@ -4,7 +4,7 @@ import numpy as np
 
 # Load the trained model
 with open('model_rf_smote.pkl', 'rb') as file:
-    model = pickle.load(file)
+    model = pickle.load(file, encoding='latin1')
 
 # Define a function to make predictions
 def predict(account_length, international_plan, voice_mail_plan, number_vmail_messages,
