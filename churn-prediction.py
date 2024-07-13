@@ -10,15 +10,12 @@ from imblearn.over_sampling import SMOTE
 train_data = pd.read_csv('Data_Train_Churn.csv')
 
 # Assume the last column is the target variable
-X_train = train_data.iloc[:, :-1].values
-y_train = train_data.iloc[:, -1].values
-
-X_train_array = X_train
-y_train_array = y_train
+X_train = train_data.iloc[:, :-1]
+y_train = train_data.iloc[:, -1]
 
 # Apply SMOTE to the training data
 smote = SMOTE()
-X_train_resampled, y_train_resampled = smote.fit_resample(X_train_array, y_train_array)
+X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 
 # Create a sample model
 model = RandomForestClassifier()
