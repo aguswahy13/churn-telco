@@ -1,15 +1,23 @@
 import streamlit as st
 import pickle
 import numpy as np
+import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE
 
-# Create a sample model
-model = RandomForestClassifier()
-smote = SMOTE()
+# Load your training data
+train_data = pd.read_csv('Data_Train_Churn.csv')
+
+# Assume the last column is the target variable
+X_train = train_data.iloc[:, :-1]
+y_train = train_data.iloc[:, -1]
 
 # Apply SMOTE to the training data
+smote = SMOTE()
 X_train, y_train = smote.fit_resample(X_train, y_train)
+
+# Create a sample model
+model = RandomForestClassifier()
 
 # Train the model
 model.fit(X_train, y_train)
