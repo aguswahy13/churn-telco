@@ -10,8 +10,8 @@ from imblearn.over_sampling import SMOTE
 train_data = pd.read_csv('Data_Train_Churn.csv')
 
 # Assume the last column is the target variable
-X_train = train_data.iloc[:, :-1]
-y_train = train_data.iloc[:, -1]
+X_train = train_data.iloc[:, :-1].values
+y_train = train_data.iloc[:, -1].values
 
 # Apply SMOTE to the training data
 smote = SMOTE()
