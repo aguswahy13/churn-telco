@@ -1,25 +1,10 @@
 import streamlit as st
 import pickle
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
-from imblearn.over_sampling import SMOTE
 
-# Create a sample model
-model = RandomForestClassifier()
-smote = SMOTE()
-
-# Train the model (replace with your actual training code)
-model.fit(X_train, y_train)
-
-# Save the model to a pickle file
-with open('model_rf_smote.pkl', 'wb') as file:
-    pickle.dump(model, file, protocol=pickle.HIGHEST_PROTOCOL)
-
-"""
 # Load the trained model
 with open('model_rf_smote.pkl', 'rb') as file:
-    model = pickle.load(file, encoding='latin1')
-"""
+    model = pickle.load(file)
 
 # Define a function to make predictions
 def predict(account_length, international_plan, voice_mail_plan, number_vmail_messages,
@@ -65,6 +50,3 @@ if st.button('Predict Churn'):
         st.write('The customer is likely to churn.')
     else:
         st.write('The customer is not likely to churn.')
-
-# To run the Streamlit app, use the command:
-# streamlit run <name_of_this_file>.py
