@@ -8,12 +8,16 @@ from imblearn.over_sampling import SMOTE
 model = RandomForestClassifier()
 smote = SMOTE()
 
-# Train the model (replace with your actual training code)
-#model.fit(X_train, y_train)
+# Apply SMOTE to the training data
+X_train, y_train = smote.fit_resample(X_train, y_train)
+
+# Train the model
+model.fit(X_train, y_train)
 
 # Save the model to a pickle file
 with open('model_rf_smote.pkl', 'wb') as file:
     pickle.dump(model, file, protocol=pickle.HIGHEST_PROTOCOL)
+
 
 """
 # Load the trained model
