@@ -1,16 +1,11 @@
 import streamlit as st
 import pickle
 import numpy as np
-import os
+import pickle
 
-file_path = 'model_rf_smote.pkl'
-
-if os.path.exists(file_path):
-    with open(file_path, 'rb') as file:
-        model = pickle.load(file)
-else:
-    print(f"Error: File '{file_path}' does not exist.")
-
+# Assume 'model' is your trained model
+with open('model_rf_smote.pkl', 'wb') as file:
+    pickle.dump(model, file)
 
 # Define a function to make predictions
 def predict(account_length, international_plan, voice_mail_plan, number_vmail_messages,
