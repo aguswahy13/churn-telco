@@ -9,7 +9,7 @@ model = RandomForestClassifier()
 smote = SMOTE()
 
 # Train the model (replace with your actual training code)
-model.fit(X_train, y_train)
+#model.fit(X_train, y_train)
 
 # Save the model to a pickle file
 with open('model_rf_smote.pkl', 'wb') as file:
