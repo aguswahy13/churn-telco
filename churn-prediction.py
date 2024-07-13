@@ -1,9 +1,16 @@
 import streamlit as st
 import pickle
 import numpy as np
+import os
+
+# Get the current working directory
+cwd = os.getcwd()
+
+# Define the path to the model file
+model_path = os.path.join(cwd, 'model_rf_smote.pkl')
 
 # Load the trained model
-with open('model_rf_smote.pkl', 'rb') as file:
+with open(model_path, 'rb') as file:
     model = pickle.load(file)
 
 # Define a function to make predictions
