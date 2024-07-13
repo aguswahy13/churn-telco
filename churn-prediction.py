@@ -6,7 +6,7 @@ from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE
 
 # Load your training data
-train_data = pd.read_csv('dataset/Data_Train_Churn.csv')
+train_data = pd.read_csv('main/dataset/Data_Train_Churn.csv')
 
 # Assume the last column is the target variable
 X_train = train_data.iloc[:, :-1]
