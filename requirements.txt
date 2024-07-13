@@ -1,3 +1,5 @@
-#add this
 streamlit
 scikit-learn
+imbalanced-learn
+numpy
+pandas
