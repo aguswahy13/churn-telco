@@ -13,8 +13,8 @@ train_data = pd.read_csv('Data_Train_Churn.csv')
 X_train = train_data.iloc[:, :-1].values
 y_train = train_data.iloc[:, -1].values
 
-X_train_array = X_train.values
-y_train_array = y_train.values
+X_train_array = X_train
+y_train_array = y_train
 
 # Apply SMOTE to the training data
 smote = SMOTE()
