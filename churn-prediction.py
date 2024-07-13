@@ -3,15 +3,14 @@ import pickle
 import numpy as np
 import os
 
-# Get the current working directory
-cwd = os.getcwd()
+file_path = 'model_rf_smote.pkl'
 
-# Define the path to the model file
-model_path = os.path.join(cwd, 'model_rf_smote.pkl')
+if os.path.exists(file_path):
+    with open(file_path, 'rb') as file:
+        model = pickle.load(file)
+else:
+    print(f"Error: File '{file_path}' does not exist.")
 
-# Load the trained model
-with open(model_path, 'rb') as file:
-    model = pickle.load(file)
 
 # Define a function to make predictions
 def predict(account_length, international_plan, voice_mail_plan, number_vmail_messages,
