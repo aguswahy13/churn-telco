@@ -24,7 +24,7 @@ X_train_resampled, y_train_resampled = smote.fit_resample(X_train_array, y_train
 model = RandomForestClassifier()
 
 # Train the model
-model.fit(X_train, y_train)
+model.fit(X_train_resampled, y_train_resampled)
 
 # Save the model to a pickle file
 with open('model_rf_smote.pkl', 'wb') as file:
