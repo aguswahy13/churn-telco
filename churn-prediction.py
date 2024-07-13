@@ -14,11 +14,11 @@ X_train = train_data.iloc[:, :-1].values
 y_train = train_data.iloc[:, -1].values
 
 # Apply SMOTE to the training data
-smote = SMOTE()
+smote = SMOTE(random_state=42)  # Set a random state for reproducibility
 X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
 
 # Create a sample model
-model = RandomForestClassifier()
+model = RandomForestClassifier(random_state=42)  # Set a random state for reproducibility
 
 # Train the model
 model.fit(X_train_resampled, y_train_resampled)
@@ -80,4 +80,4 @@ if st.button('Predict Churn'):
         st.write('The customer is not likely to churn.')
 
 # To run the Streamlit app, use the command:
-# streamlit run <name_of_this_file>.py
+# streamlit run <name
