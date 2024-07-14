@@ -57,6 +57,7 @@ def predict(account_length, international_plan, voice_mail_plan, number_vmail_me
     
     # Encode categorical variables
     le = LabelEncoder()
+    le.fit([0, 1])  # Fit the LabelEncoder with the possible values
     inputs[0, 1] = le.transform([international_plan])[0]
     inputs[0, 2] = le.transform([voice_mail_plan])[0]
 
