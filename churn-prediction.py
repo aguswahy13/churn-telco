@@ -1,8 +1,6 @@
-import csv
-import numpy as np
-import pandas as pd
 import streamlit as st
 import pickle
+import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE
 
