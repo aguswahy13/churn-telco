@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE
+from sklearn.preprocessing import LabelEncoder
 
 # Load your training data
 train_data = pd.read_csv('Data_Train_Churn.csv')
@@ -11,6 +12,13 @@ train_data = pd.read_csv('Data_Train_Churn.csv')
 # Assume the last column is the target variable
 X_train = train_data.iloc[:, :-1].values
 y_train = train_data.iloc[:, -1].values
+
+# Assume that 'X_train' is your feature data and 'y_train' is your target data
+le = LabelEncoder()
+
+for col in X_train.columns:
+    if X_train[col].dtype == 'object':
+        X_train[col] = le.fit_transform(X_train[col])
 
 # Apply SMOTE to the training data
 smote = SMOTE(random_state=42)  # Set a random state for reproducibility
@@ -42,7 +50,11 @@ def predict(account_length, international_plan, voice_mail_plan, number_vmail_me
     inputs = np.array([[account_length, international_plan, voice_mail_plan, number_vmail_messages,
                         total_day_minutes, total_day_calls, total_eve_minutes, total_eve_calls,
                         total_night_minutes, total_night_calls, total_intl_minutes, total_intl_calls,
-                        number_customer_service_calls]])
+                        number_customer_service_calls]]
+    
+    # Encode categorical variables
+    inputs[:, 1] = le.transform([international_plan])
+    inputs[:, 2] = le.transform([voice_mail_plan])
 
     # Make a prediction using the model
     prediction = model.predict(inputs)
