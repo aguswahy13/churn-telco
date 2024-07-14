@@ -50,8 +50,13 @@ def predict(account_length, international_plan, voice_mail_plan, number_vmail_me
     inputs = np.array([[account_length, international_plan, voice_mail_plan, number_vmail_messages,
                         total_day_minutes, total_day_calls, total_eve_minutes, total_eve_calls,
                         total_night_minutes, total_night_calls, total_intl_minutes, total_intl_calls,
-                        number_customer_service_calls]]
+                        number_customer_service_calls]])
     
+    # Encode categorical variables
+    #le = LabelEncoder()
+    #inputs[0, 1] = le.transform([international_plan])[0]
+    #inputs[0, 2] = le.transform([voice_mail_plan])[0]
+
     # Encode categorical variables
     inputs[:, 1] = le.transform([international_plan])
     inputs[:, 2] = le.transform([voice_mail_plan])
