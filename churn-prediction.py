@@ -53,13 +53,13 @@ def predict(account_length, international_plan, voice_mail_plan, number_vmail_me
                         number_customer_service_calls]])
     
     # Encode categorical variables
-    #le = LabelEncoder()
-    #inputs[0, 1] = le.transform([international_plan])[0]
-    #inputs[0, 2] = le.transform([voice_mail_plan])[0]
+    le = LabelEncoder()
+    inputs[0, 1] = le.transform([international_plan])[0]
+    inputs[0, 2] = le.transform([voice_mail_plan])[0]
 
     # Encode categorical variables
-    inputs[:, 1] = le.transform([international_plan])
-    inputs[:, 2] = le.transform([voice_mail_plan])
+    #inputs[:, 1] = le.transform([international_plan])
+    #inputs[:, 2] = le.transform([voice_mail_plan])
 
     # Make a prediction using the model
     prediction = model.predict(inputs)
