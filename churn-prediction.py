@@ -10,8 +10,8 @@ from sklearn.preprocessing import LabelEncoder
 train_data = pd.read_csv('Data_Train_Churn.csv')
 
 # Assume the last column is the target variable
-X_train = train_data.iloc[:, :-1].values
-y_train = train_data.iloc[:, -1].values
+X_train = train_data.iloc[:, :-1]
+y_train = train_data.iloc[:, -1]
 
 # Assume that 'X_train' is your feature data and 'y_train' is your target data
 le = LabelEncoder()
@@ -19,6 +19,9 @@ le = LabelEncoder()
 for col in X_train.columns:
     if X_train[col].dtype == 'object':
         X_train[col] = le.fit_transform(X_train[col])
+
+# Convert X_train to a numpy array
+X_train = X_train.values
 
 # Apply SMOTE to the training data
 smote = SMOTE(random_state=42)  # Set a random state for reproducibility
