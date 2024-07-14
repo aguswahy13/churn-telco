@@ -65,6 +65,9 @@ def predict(account_length, international_plan, voice_mail_plan, number_vmail_me
     #inputs[:, 1] = le.transform([international_plan])
     #inputs[:, 2] = le.transform([voice_mail_plan])
 
+    # Reshape the inputs to match the shape of the training data
+    inputs = inputs.reshape(1, -1)
+
     # Make a prediction using the model
     prediction = model.predict(inputs)
     
