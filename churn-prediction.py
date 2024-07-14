@@ -1,32 +1,21 @@
-import streamlit as st
-import pickle
 import csv
 import numpy as np
 import pandas as pd
+import streamlit as st
+import pickle
 from sklearn.ensemble import RandomForestClassifier
 from imblearn.over_sampling import SMOTE
 
-# Load your training data
-train_data = pd.read_csv('Data_Train_Churn.csv')
-
-# Assume the last column is the target variable
-X_train = train_data.iloc[:, :-1].values
-y_train = train_data.iloc[:, -1].values
-
-# Apply SMOTE to the training data
-smote = SMOTE(random_state=42)  # Set a random state for reproducibility
-X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)
-
 # Create a sample model
-model = RandomForestClassifier(random_state=42)  # Set a random state for reproducibility
+model = RandomForestClassifier()
+smote = SMOTE()
 
-# Train the model
-model.fit(X_train_resampled, y_train_resampled)
+# Train the model (replace with your actual training code)
+model.fit(X_train, y_train)
 
 # Save the model to a pickle file
 with open('model_rf_smote.pkl', 'wb') as file:
     pickle.dump(model, file, protocol=pickle.HIGHEST_PROTOCOL)
-
 
 """
 # Load the trained model
@@ -80,4 +69,4 @@ if st.button('Predict Churn'):
         st.write('The customer is not likely to churn.')
 
 # To run the Streamlit app, use the command:
-# streamlit run <name
+# streamlit run <name_of_this_file>.py
