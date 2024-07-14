@@ -77,4 +77,5 @@ if st.button('Predict Churn'):
     else:
         st.write('The customer is not likely to churn.')
 
-# To run the Streamlit app
+# To run the Streamlit app, use the command:
+# streamlit run <name_of_this_file>.py
